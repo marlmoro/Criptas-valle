@@ -1,0 +1,38 @@
+<Profile>
+  <Name>[A1-BestEXP_FastTP v0.6]Crypt of the Ancients</Name>
+  <GameParams quest="72738" step="12" act="A1" resumeFromSave="True" isPrivate="True" numGames="-1" /> 
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  
+    <TargetBlacklists>
+	  <TargetBlacklist actorId="215512" /> <!--a1dun_Caves_Nephalem Altar_A_Chest-->
+	  <!--TargetBlacklist actorId="101192" /--> <!--trOut_Barrel_Common-->
+	  <!--TargetBlacklist actorId="158681" /--> <!--Blacksmith_Lore-->
+    </TargetBlacklists>
+
+
+  <Order>
+
+    <TrinityMaxDeaths questId="1" max="2" />
+        
+        <!-- In Town, use Waypoint to Crypt of the Ancients -->
+    	<If condition="CurrentLevelAreaId == 19947">
+		<ToggleTargeting questId="1" combat="True" looting="True" lootRadius="100" killRadius="50" />
+		<LogMessage questId="72738" stepId="12" output="Using portal to Crypt of the Ancients" />
+		<TakeTownPortal questId="72738" stepId="12" />
+    	</If>
+
+        <!-- In Crypt of the Ancients, Explore -->
+    		<If condition="CurrentWorldId == 60394" >
+      		<LogMessage questId="72738" stepId="12" output="Exploring Crypt of the Ancients" />
+      		<TrinityExploreDungeon questId="72738" stepId="12" until="FullyExplored" boxSize="55" boxTolerance="0.001" pathPrecision="40" timeoutType="GoldInactivity" townPortalOnTimeout="True" timeoutValue="30" ignoreMarkers="True">
+      		</TrinityExploreDungeon>
+			<TrinityTownPortal questId="72738" stepId="12"/>
+			</If>
+		
+        <TrinityTownPortal questId="1" />
+        <LoadProfile profile="R-A1LoadOrdered.xml" />
+        
+		
+  </Order>
+</Profile>

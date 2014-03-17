@@ -1,0 +1,58 @@
+﻿<Profile>
+  <Name>R-A1 Load Next Profile</Name>
+  <GameParams quest="72738" step="12" act="A1" resumeFromSave="True" isPrivate="True" numGames="-1" /> 
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+
+  <Order>
+    <!-- Set QuestTools Variables -->
+    <QuestToolsSetVariable questId="101758" stepId="1" key="ReloadProfileOnDeath" value="True" />
+    <QuestToolsSetVariable questId="101758" stepId="1" key="DebugLogging" value="False" />
+
+    <If condition="not Me.IsInTown">
+      <LogMessage questId="1" output="[R-A1] Attempted to load profile outside of town, from an unknown location! Returning to town now..." />
+      <TrinityTownPortal questId="1" />
+    </If>
+
+    <!-- Always Run these Profiles in order, first -->
+    <TrinityLoadOnce questId="1" noRandom="True">
+      <ProfileList>
+        <LoadProfileOnce profile="A1-BestEXP_FastTP.xml" />
+        <LoadProfileOnce profile="WeepingHollow.xml" />
+      </ProfileList>
+    </TrinityLoadOnce>
+
+    <!-- Run these Profiles in random order -->
+    <TrinityLoadOnce questId="1" noRandom="True">
+      <ProfileList>
+      </ProfileList>
+    </TrinityLoadOnce>
+    
+    <LogMessage quest="1" output="[R-A1] All profiles have been loaded! Nothing left to do." />
+    <WaitTimer quest="1" waitTime="1000" />
+    <LeaveGame quest="1" reason="All profiles have been loaded! Nothing left to do." stayInParty="False" />
+
+    <!--
+    
+      <LogMessage questId="1" output="[R-A1] " />
+      <SafeMoveTo questId="1" x="" y="" z="" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="" />
+      <MoveToActor questId="1" actorId="" x="" y="" z="" interactRange="15" pathPointLimit="250" statusText="" />
+
+
+      <TrinityExploreDungeon questId="1" until="ObjectFound" objectDistance="80"
+                             boxSize="80" boxTolerance="0.01" pathPrecision="40"
+                             timeoutType="GoldInactivity" timeoutValue="600" townPortalOnTimeout="false"
+                             ignoreMarkers="False">
+        <PriorityScenes>
+          <PriorityScene sceneName="Exit" />
+        </PriorityScenes>
+        <IgnoreScenes>
+
+        </IgnoreScenes>
+      </TrinityExploreDungeon>
+      
+    -->
+
+  </Order>
+
+</Profile>

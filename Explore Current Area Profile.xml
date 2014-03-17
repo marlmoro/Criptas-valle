@@ -1,0 +1,26 @@
+<Profile>
+	<Name>Explore Current Area by rrrix</Name>
+	<KillMonsters>True</KillMonsters>
+	<PickupLoot>True</PickupLoot>
+
+	<Order>
+
+    <ToggleTargeting questId="1" combat="True" looting="True" />
+    
+    <TrinityExploreDungeon questId="1" until="FullyExplored" boxSize="40" boxTolerance="0.01" />
+    
+    <ExploreArea questId="1" until="FullyExplored" boxSize="10" boxTolerance="0.70" />
+
+    <!-- Explore until we find the Exit Scene -->
+    <TrinityExploreDungeon questId="1" until="SceneFound" sceneName="Exit" boxSize="10" boxTolerance="0.70">
+      <PriortizeScenes>
+        <PriorityScene sceneName="Exit" />
+      </PriortizeScenes>
+    </TrinityExploreDungeon>
+    <!-- Move to the Terminus map marker -->
+    <MoveToMarker questId="1" markerHash="-944805511" />
+    <!-- Interact with the portal -->
+    <UseObject questId="1" actorId="175501" />
+
+  </Order>
+</Profile>

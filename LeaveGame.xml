@@ -1,0 +1,12 @@
+<Profile>
+	<Name>R-A1 LeaveGame</Name>
+	<KillMonsters>True</KillMonsters>
+	<PickupLoot>True</PickupLoot>
+  <GameParams quest="136656" step="-1" act="A1" resumeFromSave="false" isPrivate="True" numGames="-1" />
+  <Order>
+    <WaitTimer waitTime="5000" />
+    <UseTownPortal questId="1" />
+    <LoadProfile questId="1" profile="R-A1LoadOrdered.xml" leaveGame="True" />
+		<WaitTimer waitTime="5000" />
+	</Order>
+</Profile>

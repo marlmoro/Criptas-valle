@@ -1,0 +1,12 @@
+﻿<Profile>
+  <Name>R-A1 Relogger Loader</Name>
+  <GameParams quest="72738" step="12" act="A1" resumeFromSave="True" isPrivate="True" numGames="-1" /> 
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+
+  <Order>
+    <LogMessage quest="1" output="[R-A1] Relogger Loader Loaded!" />
+    <LoadProfile profile="R-A1LoadOrdered.xml" />
+  </Order>
+
+</Profile>

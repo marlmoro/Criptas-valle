@@ -1,0 +1,111 @@
+﻿<Profile>
+  <Name>R-A1</Name>
+  <GameParams quest="72738" step="12" act="A1" resumeFromSave="true" isPrivate="True" numGames="-1" /> 
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+
+  <Order>
+    <LogMessage questid="1" output="[R-A1] Loaded Weeping Hollow" />
+    <!-- Set QuestTools Variables -->
+    <QuestToolsSetVariable questId="1" key="ReloadProfileOnDeath" value="True" />
+    <QuestToolsSetVariable questId="1" key="DebugLogging" value="True" />
+
+    <TrinityCombatIgnore actorId="3847" name="Corpulent_A" exceptElites="False" exceptTrash="False" />
+    <TrinityCombatIgnore actorId="4564" name="Lamprey_A" exceptElites="False" exceptTrash="False" />
+     
+    <!-- The Weeping Hollow -->
+    <!-- Start in Town -->
+    <If condition="CurrentLevelAreaId == 19947">
+      <!-- Waypoint to Cemetary of the Forsaken -->
+      <LogMessage questId="1" output="[R-A1] Disabling Combat" />
+      <ToggleTargeting questId="1" combat="False" />
+      <UseWaypoint questId="1" waypointNumber="6" x="2981" y="2835" z="24" />
+      <WaitTimer questId="1" waitTime="1000" />
+    </If>
+
+    <!-- Death Handling - Weeping Hollow -->
+    <!--<If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2275, 1860, 0, 30)">
+      <LogMessage output="Death Handling: Using Town Portal" />
+      <TrinityTownPortal questId="1" />
+      <UseWaypoint questId="1" waypointNumber="0" x="2980" y="2830" z="25" />
+    </If>-->
+
+    <!-- Standing in Cemetary of the Forsaken -->
+    <If condition="CurrentLevelAreaId == 72712 and ActorExistsAt(Me.ActorSNO, 2160, 1825, 0, 300)">
+      <WaitTimer questId="1" waitTime="1000" />
+      <SafeMoveTo questId="1" x="2271" y="1861" z="0" pathPrecision="5" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="3" statusText="Moving to Gate" />
+      <LogMessage questId="1" output="[R-A1] Enabling Combat" />
+      <ToggleTargeting questId="1"  combat="True" />
+    </If>
+
+    <If condition="CurrentLevelAreaId == 19954">
+      <LogMessage questid="1" output="[R-A1] Welcome to the Weeping Hollow!" />
+    </If>
+
+    <!-- Standing at Weeping Hollow / Cemetary Gate -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2271, 1861, 0, 30)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Weeping Hollow North East" />
+      <SafeMoveTo questId="1" x="2225" y="2050" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Weeping Hollow North East" />
+    </If>
+
+    <!-- Standing @ Weeping Hollow NE Corner, clear to Den Of the Fallen #1 -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2225, 2050, 0, 300)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Den of the Fallen Portal #1" />
+      <SafeMoveTo questId="1" x="2525" y="2094" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Den of the Fallen #1" />
+    </If>
+    <!-- Check for Den of the Fallen #1 -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2525, 2094, 0, 90)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Den of the Fallen #1" />
+      <MoveToActor questId="1" actorId="176003" x="2525" y="2094" z="-7" interactRange="15" pathPointLimit="250" statusText="Dungeon Found" />
+    </If>
+
+    <!-- Standing @ Den of the Fallen #1, clear to South corner -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2525, 2094, 0, 300)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Weeping South" />
+      <SafeMoveTo questId="1" x="2950" y="2300" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Weeping Hollow South" />
+    </If>
+
+    <!-- Standing @ Weeping Hollow South, clear to Den of the Fallen #2 -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2950, 2300, 0, 300)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Den of the Fallen Portal #2" />
+      <MoveToActor questId="1" actorId="176003" x="2885" y="2094" z="-7" interactRange="15" pathPointLimit="250" statusText="Dungeon Found" />
+    </If>
+
+    <!-- Standing @ Den of the Fallen #2, clear to South West Corner -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2885, 2094, 0, 300)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Weeping Hollow South West" />
+      <SafeMoveTo questId="1" x="2950" y="1900" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Weeping Hollow South West" />
+    </If>
+
+    <!-- Check for Den of the Fallen #3 -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2950, 1900, 0, 90)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Den of the Fallen #3" />
+      <MoveToActor questId="1" actorId="176003" x="2885" y="1975" z="-10" interactRange="15" pathPointLimit="250" statusText="Dungeon Found" />
+    </If>
+
+    <!-- Standing @ Weeping Hollow South West Corner, clear to Center + North West corner -->
+    <If condition="CurrentLevelAreaId == 19954 and ActorExistsAt(Me.ActorSNO, 2950, 1900, 0, 300)">
+      <LogMessage questId="1" output="[R-A1] Clearing to Weeping Hollow Center" />
+      <SafeMoveTo questId="1" x="2500" y="2000" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Weeping Hollow Center" />
+      <LogMessage questId="1" output="[R-A1] Clearing to Weeping Hollow North West" />
+      <SafeMoveTo questId="1" x="2460" y="1700" z="0" pathPrecision="50" straightLinePathing="False" pathPointLimit="250" unsafeRandomDistance="30" statusText="Clearing to Weeping Hollow North West" />
+    </If>
+
+    <!-- Reload profile to catch missed areas -->
+    <TrinityUseOnce id="6000" max="10">
+      <ReloadProfile />
+    </TrinityUseOnce>
+
+    <!-- Standing @ Weeping Hollow NW Corner -->
+    <LogMessage questId="1" output="[R-A1] Cleared Weeping Hollow" />
+
+    <!--<WaitTimer questId="1" waitTime="1000" />-->
+
+    <LoadProfile profile="R-A1LoadOrdered.xml" />
+    
+    <LeaveGame reason="The END" stayInParty="True" />  
+
+
+  </Order>
+
+</Profile>

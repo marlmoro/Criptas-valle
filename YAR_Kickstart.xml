@@ -1,0 +1,11 @@
+<!-- This is a automaticly generated profile by YetAnotherRelogger
+It is used to ensure a profile starts without causing DB to choken it -->
+<Profile>
+  <Name>YAR Profile Kickstart: R-A1_START.xml</Name>
+  <KillMonsters>True</KillMonsters>
+  <PickupLoot>True</PickupLoot>
+  <GameParams quest="72738" step="12" act="A1" resumeFromSave="True" isPrivate="True" numGames="-1" />
+    <Order>
+      <LoadProfile profile="C:\Users\Perico\Desktop\R-A1 redux 1.2.0 edited\R-A1 redux\R-A1_START.xml" />
+    </Order>
+</Profile>
